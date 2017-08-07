@@ -18,9 +18,9 @@ public class TranslateServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter printWriter = resp.getWriter();
 
-        String [] arraySelect = req.getParameterValues("SelectInYouUnits");
+        String select = req.getParameter("SelectInYouUnits");
 
-        if(arraySelect[0].equals("Foots")) {
+        if(select.equals("Foots")) {
             String ft = req.getParameter("inputValue");
             double valueFoots = Double.parseDouble(ft);
             double resultInMeter = unitsTranslate.footsToMeters(valueFoots);
@@ -29,7 +29,7 @@ public class TranslateServlet extends HttpServlet {
             printWriter.println(valueFoots + " ft = "+ resultInMeter + " meters"+"<br>");
             printWriter.println("<a href='http://localhost:8080/index.html'>Go back</a>");
         }
-        else if(arraySelect[0].equals("Meters")) {
+        else if(select.equals("Meters")) {
             String mtr = req.getParameter("inputValue");
             double valueMeter = Double.parseDouble(mtr);
             double resultInFoot = unitsTranslate.metersToFoots(valueMeter);
